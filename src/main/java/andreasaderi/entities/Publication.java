@@ -10,15 +10,15 @@ import java.util.UUID;
 public class Publication {
     @Id
     @GeneratedValue
-    private UUID id;
+    protected UUID id;
     @Column(nullable = false)
-    private long isbn;
+    protected long isbn;
     @Column(nullable = false)
-    private String title;
+    protected String title;
     @Column(name = "publication_year")
-    private int publicationYear;
+    protected int publicationYear;
     @Column(name = "pages_num")
-    private int pagesNum;
+    protected int pagesNum;
 
     protected Publication() {
     }
@@ -33,4 +33,6 @@ public class Publication {
     public String getTitle() {
         return title;
     }
+
+
 }

@@ -23,4 +23,17 @@ public class Book extends Publication {
     public String getAuthor() {
         return author;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                ", id=" + id +
+                ", isbn=" + isbn +
+                ", title='" + title + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", pagesNum=" + pagesNum +
+                '}';
+    }
 }

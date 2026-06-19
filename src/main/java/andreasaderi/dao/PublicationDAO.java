@@ -4,7 +4,9 @@ import andreasaderi.entities.Publication;
 import andreasaderi.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.UUID;
 
 public class PublicationDAO {
@@ -19,12 +21,17 @@ public class PublicationDAO {
         transaction.begin();
         entityManager.persist(newPublication);
         transaction.commit();
-        System.out.println("La persona " + newPublication.getTitle() + " è stata salvata sul DB.");
+        System.out.println("La pubblicazione " + newPublication.getTitle() + " è stata salvata sul DB.");
     }
 
     public Publication findById(String id) {
         Publication result = entityManager.find(Publication.class, UUID.fromString(id));
         if (result == null) throw new NotFoundException(id);
         return result;
+    }
+
+    public List<Publication> findAllPublications() {
+        TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p", Publication.class);
+        return query.getResultList();
     }
 }

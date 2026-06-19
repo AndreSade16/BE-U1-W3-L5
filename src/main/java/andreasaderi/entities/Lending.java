@@ -13,10 +13,10 @@ public class Lending {
     @GeneratedValue
     private UUID id;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "publication_id")
+    @JoinColumn(name = "publication_id", nullable = false)
     private Publication publication;
     @Column(name = "lending_start_date", nullable = false)
     private LocalDate lendingStartDate;
@@ -32,10 +32,20 @@ public class Lending {
         this.user = user;
         this.publication = publication;
         this.lendingStartDate = lendingStartDate;
+        this.expectedReturnDate = lendingStartDate.plusDays(30);
         this.actualReturnDate = null;
     }
 
     public void setActualReturnDate(LocalDate actualReturnDate) {
         this.actualReturnDate = actualReturnDate;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Publication getPublication() {
+        return publication;
+    }
+
 }

@@ -19,4 +19,16 @@ public class Magazine extends Publication {
         super(isbn, title, publicationYear, pagesNum);
         this.periodicity = periodicity;
     }
+
+    @Override
+    public String toString() {
+        return "Magazine{" +
+                "periodicity=" + periodicity +
+                ", id=" + id +
+                ", isbn=" + isbn +
+                ", title='" + title + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", pagesNum=" + pagesNum +
+                '}';
+    }
 }
