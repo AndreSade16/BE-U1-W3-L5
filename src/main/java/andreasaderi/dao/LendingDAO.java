@@ -32,7 +32,7 @@ public class LendingDAO {
     }
 
     public List<Lending> findExpiredLendings() {
-        TypedQuery<Lending> query = entityManager.createQuery("SELECT l FROM Lending l WHERE l.expectedReturnDate < :now", Lending.class);
+        TypedQuery<Lending> query = entityManager.createQuery("SELECT l FROM Lending l WHERE l.expectedReturnDate < :now AND l.actualReturnDate IS NULL", Lending.class);
         query.setParameter("now", LocalDate.now());
         List<Lending> result = query.getResultList();
         if (result.isEmpty()) System.out.println("Nessun elemento prestato è ancora mancante oltre la data prevista.");
