@@ -114,7 +114,7 @@ public class Application {
 //        Lendings:
 
         Lending lending1 = new Lending(user1FromDb, publication1FromDb, LocalDate.now());
-        Lending lending2 = new Lending(user2FromDb, publication3FromDb, LocalDate.now());
+        Lending lending2 = new Lending(user2FromDb, publication3FromDb, LocalDate.of(2026, 4, 19));
         Lending lending3 = new Lending(user3FromDb, publication2FromDb, LocalDate.now());
         Lending lending4 = new Lending(user3FromDb, publication5FromDb, LocalDate.now());
         Lending lending5 = new Lending(user1FromDb, publication6FromDb, LocalDate.now());
@@ -158,5 +158,14 @@ public class Application {
 //        Ricerca per titolo o parte di esso: pd.findByTitlePortion() OK
 
 //          test: pd.findByTitlePortion("aadafafadf");
+
+//        Ricerca degli elementi attualmente in prestito dato un numero di tessera utente: findUnreturnedPublicationsByUserCardNumber()           OK
+
+//        test: pd.findUnreturnedPublicationsByUserCardNumber(13611);
+
+//        Ricerca di tutti i prestiti scaduti e non ancora restituiti: findExpiredLendings() OK?
+
+//        test: ld.findExpiredLendings();
+
     }
 }

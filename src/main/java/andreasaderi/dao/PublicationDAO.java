@@ -2,6 +2,7 @@ package andreasaderi.dao;
 
 import andreasaderi.entities.Book;
 import andreasaderi.entities.Publication;
+import andreasaderi.entities.User;
 import andreasaderi.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -92,6 +93,32 @@ public class PublicationDAO {
             System.out.println("Nessun record con titolo contentente '" + portion + "' trovato");
         else {
             System.out.println("I record con titolo contentente '" + portion + "' sono:");
+            result.forEach(System.out::println);
+        }
+        return result;
+    }
+
+    public User findUserByCardNumber(long cardNumber) {
+        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.cardNumber = :cardNumber", User.class);
+        query.setParameter("cardNumber", cardNumber);
+        User result = query.getSingleResult();
+        if (result == null) {
+            System.out.println("L'user con card number " + cardNumber + " non è stato trovato nel DB.");
+        } else {
+            System.out.println("L'user con card number " + cardNumber + " è " + result.getName() + " " + result.getSurname());
+        }
+        return result;
+    }
+
+    public List<Publication> findUnreturnedPublicationsByUserCardNumber(long cardNumber) {
+        findUserByCardNumber(cardNumber);
+        TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Lending l JOIN l.publication p WHERE l.actualReturnDate IS NULL AND l.user.cardNumber = :cardNumber", Publication.class);
+        query.setParameter("cardNumber", cardNumber);
+        List<Publication> result = query.getResultList();
+        if (result.isEmpty())
+            System.out.println("Nessun record ancora in prestito per l'utente con card number " + cardNumber);
+        else {
+            System.out.println("I record  ancora in prestito per l'utente con card number" + cardNumber + " sono:");
             result.forEach(System.out::println);
         }
         return result;

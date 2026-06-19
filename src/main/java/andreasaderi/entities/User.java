@@ -42,5 +42,14 @@ public class User {
         return cardNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", cardNumber=" + cardNumber +
+                '}';
+    }
 }

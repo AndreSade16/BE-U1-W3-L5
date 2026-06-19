@@ -48,4 +48,15 @@ public class Lending {
         return publication;
     }
 
+    @Override
+    public String toString() {
+        return "Lending{" +
+                "id=" + id +
+                ", user=" + user +
+                ", publication=" + publication +
+                ", lendingStartDate=" + lendingStartDate +
+                ", expectedReturnDate=" + expectedReturnDate +
+                ", actualReturnDate=" + actualReturnDate +
+                '}';
+    }
 }
