@@ -155,6 +155,8 @@ public class Application {
 
 //        test: pd.findByAuthor("Daniel Brown");
 
-//        Ricerca per titolo o parte di esso: pd.findByTitlePortion() OK?
+//        Ricerca per titolo o parte di esso: pd.findByTitlePortion() OK
+
+//          test: pd.findByTitlePortion("aadafafadf");
     }
 }

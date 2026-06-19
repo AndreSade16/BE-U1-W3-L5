@@ -84,5 +84,20 @@ public class PublicationDAO {
         return result;
     }
 
+    public List<Publication> findByTitlePortion(String portion) {
+        TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p WHERE LOWER(p.title) LIKE LOWER(:portion)", Publication.class);
+        query.setParameter("portion", "%" + portion + "%");
+        List<Publication> result = query.getResultList();
+        if (result.isEmpty())
+            System.out.println("Nessun record con titolo contentente '" + portion + "' trovato");
+        else {
+            System.out.println("I record con titolo contentente '" + portion + "' sono:");
+            result.forEach(System.out::println);
+        }
+        return result;
+    }
 
 }
+
+
+
