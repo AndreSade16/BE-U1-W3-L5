@@ -6,6 +6,8 @@
         <class>andreasaderi.entities.Publication</class>
         <class>andreasaderi.entities.Book</class>
         <class>andreasaderi.entities.Magazine</class>
+        <class>andreasaderi.entities.User</class>
+        <class>andreasaderi.entities.Lending</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/u1w3l5"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
