@@ -60,8 +60,12 @@ public class PublicationDAO {
         TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p WHERE p.publicationYear = :publicationYear", Publication.class);
         query.setParameter("publicationYear", publicationYear);
         List<Publication> result = query.getResultList();
-        System.out.println("I record con anno di Pubblicazione: " + publicationYear + " sono:");
-        result.forEach(System.out::println);
+        if (result.isEmpty())
+            System.out.println("Nessun record con anno di pubblicazione " + publicationYear + " trovato");
+        else {
+            System.out.println("I record con anno di Pubblicazione: " + publicationYear + " sono:");
+            result.forEach(System.out::println);
+        }
         return result;
     }
 }
