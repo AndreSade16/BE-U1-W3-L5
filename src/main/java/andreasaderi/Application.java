@@ -35,7 +35,7 @@ public class Application {
         Publication publication3 = new Book(13413, "Code da Vinci", 2011, 350, "Dan Brown", "Fiction");
         Publication publication4 = new Magazine(13415, "Io Donna", 2026, 30, Periodicity.MONTHLY);
         Publication publication5 = new Magazine(13416, "Topolino", 2026, 100, Periodicity.WEEKLY);
-        Publication publication6 = new Magazine(13416, "Paperino", 2026, 150, Periodicity.MONTHLY);
+        Publication publication6 = new Magazine(13417, "Paperino", 2026, 150, Periodicity.MONTHLY);
 
 //        Salvo le varie istanze sul db in modo da renderle managed e avere degli ID da inserire nei lendings:
 
@@ -118,7 +118,7 @@ public class Application {
         Lending lending3 = new Lending(user3FromDb, publication2FromDb, LocalDate.now());
         Lending lending4 = new Lending(user3FromDb, publication5FromDb, LocalDate.now());
         Lending lending5 = new Lending(user1FromDb, publication6FromDb, LocalDate.now());
-        
+
 
 //        ld.save(lending1);
 //        ld.save(lending2);
@@ -126,6 +126,29 @@ public class Application {
 //        ld.save(lending4);
 //        ld.save(lending5);
 
+/*
+        Consegna:
+
+        Aggiunta di un elemento del catalogo: pd.save() OK
+
+        Rimozione di un elemento del catalogo dato un codice ISBN: pd.removeByISBN() OK
+ */
+//        test: try {
+//            pd.removeByISBN(1341551);
+//        } catch (NoResultException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+
+//      Ricerca per ISBN: pd.findByISBN() OK
+
+//        test: try {
+//            pd.findByISBN(13411314);
+//        } catch (NoResultException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+
+//        Ricerca per anno di pubblicazione: pd.findByPublicationYear() OK?
+          
 
     }
 }

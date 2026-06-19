@@ -4,6 +4,7 @@ import andreasaderi.entities.Publication;
 import andreasaderi.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -33,5 +34,25 @@ public class PublicationDAO {
     public List<Publication> findAllPublications() {
         TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p", Publication.class);
         return query.getResultList();
+    }
+
+
+    public Publication findByISBN(long isbn) {
+        TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p WHERE p.isbn = :isbn", Publication.class);
+        query.setParameter("isbn", isbn);
+        Publication result = query.getSingleResult();
+        System.out.println("Il record con ISBN: " + isbn + " è: " + result.getTitle());
+        return result;
+    }
+
+    public void removeByISBN(long isbn) {
+        findByISBN(isbn);
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        Query query = entityManager.createQuery("DELETE FROM Publication p WHERE p.isbn = :isbn");
+        query.setParameter("isbn", isbn);
+        query.executeUpdate();
+        transaction.commit();
+        System.out.println("Il record con ISBN: " + isbn + " è stato rimosso dal DB.");
     }
 }

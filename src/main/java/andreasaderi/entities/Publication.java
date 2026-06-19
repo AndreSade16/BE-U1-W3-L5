@@ -11,7 +11,7 @@ public class Publication {
     @Id
     @GeneratedValue
     protected UUID id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     protected long isbn;
     @Column(nullable = false)
     protected String title;
