@@ -151,5 +151,10 @@ public class Application {
 
 //        test: pd.findByPublicationYear(2027);
 
+//        Ricerca per autore: pd.findByAuthor() OK
+
+//        test: pd.findByAuthor("Daniel Brown");
+
+//        Ricerca per titolo o parte di esso: pd.findByTitlePortion() OK?
     }
 }

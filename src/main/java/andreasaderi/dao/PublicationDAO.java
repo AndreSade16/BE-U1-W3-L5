@@ -1,5 +1,6 @@
 package andreasaderi.dao;
 
+import andreasaderi.entities.Book;
 import andreasaderi.entities.Publication;
 import andreasaderi.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
@@ -68,4 +69,20 @@ public class PublicationDAO {
         }
         return result;
     }
+
+    public List<Book> findByAuthor(String author) {
+
+        TypedQuery<Book> query = entityManager.createQuery("SELECT b FROM Book b WHERE LOWER(b.author) = LOWER(:author) ", Book.class);
+        query.setParameter("author", author);
+        List<Book> result = query.getResultList();
+        if (result.isEmpty())
+            System.out.println("Nessun record con autore " + author + " trovato");
+        else {
+            System.out.println("I record con autore " + author + " sono:");
+            result.forEach(System.out::println);
+        }
+        return result;
+    }
+
+
 }
