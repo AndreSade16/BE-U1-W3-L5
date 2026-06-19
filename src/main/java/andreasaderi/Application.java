@@ -147,8 +147,9 @@ public class Application {
 //            System.out.println(ex.getMessage());
 //        }
 
-//        Ricerca per anno di pubblicazione: pd.findByPublicationYear() OK?
-          
+//        Ricerca per anno di pubblicazione: pd.findByPublicationYear() OK
+
+//        test: pd.findByPublicationYear(2021);
 
     }
 }

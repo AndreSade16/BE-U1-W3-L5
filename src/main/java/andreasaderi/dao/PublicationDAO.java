@@ -55,4 +55,13 @@ public class PublicationDAO {
         transaction.commit();
         System.out.println("Il record con ISBN: " + isbn + " è stato rimosso dal DB.");
     }
+
+    public List<Publication> findByPublicationYear(int publicationYear) {
+        TypedQuery<Publication> query = entityManager.createQuery("SELECT p FROM Publication p WHERE p.publicationYear = :publicationYear", Publication.class);
+        query.setParameter("publicationYear", publicationYear);
+        List<Publication> result = query.getResultList();
+        System.out.println("I record con anno di Pubblicazione: " + publicationYear + " sono:");
+        result.forEach(System.out::println);
+        return result;
+    }
 }
